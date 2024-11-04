@@ -47,7 +47,7 @@ function App() {
     >
       <Canvas>
         <Model key={"background"} url="/simpleBackground.glb" />
-        <Model key={"gun"} url="/gun.glb" />
+        <Model key={"gun"} url="/simpleGun.glb" />
         <PerspectiveCamera
           makeDefault
           fov={10}
