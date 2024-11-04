@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { PerspectiveCamera, PresentationControls } from "@react-three/drei";
 
-const Model = () => {
+const Model: FC<{ url: string }> = ({ url }) => {
   const [loading, setLoading] = useState(false);
-  const gltf = useLoader(GLTFLoader, "/simpleBackground.glb", (loader) => {
+  const gltf = useLoader(GLTFLoader, url, (loader) => {
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath(
       "https://www.gstatic.com/draco/versioned/decoders/1.5.3/"
@@ -46,7 +46,8 @@ function App() {
       }}
     >
       <Canvas>
-        <Model />
+        <Model key={"background"} url="/simpleBackground.glb" />
+        <Model key={"gun"} url="/gun.glb" />
         <PerspectiveCamera
           makeDefault
           fov={10}
