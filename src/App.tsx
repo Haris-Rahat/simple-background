@@ -2,11 +2,7 @@ import { useState } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { Canvas, useLoader } from "@react-three/fiber";
-import {
-  PerspectiveCamera,
-  OrbitControls,
-  PresentationControls,
-} from "@react-three/drei";
+import { PerspectiveCamera, PresentationControls } from "@react-three/drei";
 
 const Model = () => {
   const [loading, setLoading] = useState(false);
