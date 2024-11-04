@@ -2,7 +2,11 @@ import { useState } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { Canvas, useLoader } from "@react-three/fiber";
-import { PerspectiveCamera, OrbitControls } from "@react-three/drei";
+import {
+  PerspectiveCamera,
+  OrbitControls,
+  PresentationControls,
+} from "@react-three/drei";
 
 const Model = () => {
   const [loading, setLoading] = useState(false);
@@ -29,9 +33,11 @@ const Model = () => {
 
   if (loading) return null;
   return (
-    <mesh rotation={[0, 0.5, 0]} scale={[3, 3, 3]}>
-      <primitive object={gltf.scene} />
-    </mesh>
+    <PresentationControls>
+      <mesh rotation={[0, 0.5, 0]} scale={[3, 3, 3]}>
+        <primitive object={gltf.scene} />
+      </mesh>
+    </PresentationControls>
   );
 };
 
@@ -45,10 +51,12 @@ function App() {
     >
       <Canvas>
         <Model />
-        <OrbitControls />
-        <PerspectiveCamera makeDefault fov={10}
+        <PerspectiveCamera
+          makeDefault
+          fov={10}
           aspect={window.innerWidth / window.innerHeight}
-          position={[0, 0, 60]} />
+          position={[0, 0, 60]}
+        />
       </Canvas>
     </div>
   );
